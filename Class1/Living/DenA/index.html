@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="info">
+            <p><b>SMART HOME CONTROLER</b></p>
+            <p>Khu vực:Tầng 1 - Phòng khách</p>
+            <p>Thiết bị: Đèn A</p>
+        </div>
+        <div class="setting">
+            <div class="status">
+                <p><b>Trạng thái: <span id="status"> </b></p>
+            </div>
+            <p><b>Công tắc</b></p>
+            <div class="button">
+                
+            <b>Tắt</b>
+            <label class="switch">
+                <input id ="check" type="checkbox" >
+                <span class="slider round"></span>
+              
+            </label>
+            <b>Bật</b>
+            
+            </div>
+            
+            <p><b>Độ sáng: <span id="light-mode"></b></p>
+            
+            <input type="range" min="0" max="100" value="0" class="slider1" id ="myRange">
+        </div>
+    </div>
+    <script>
+        var slider = document.getElementById("myRange");
+        var status2 = document.getElementById("status");
+        var light = document.getElementById("light-mode");
+        var check = document.getElementById("check");
+        var status1;
+        var light1;
+        if(check.checked == true){
+            status1 = "Bật";
+            light1 = "100"+"%";
+            status2.innerHTML = status1;
+            light.innerHTML = light1;
+        }
+        else{
+            status1 = "Tắt";
+            light1 = "0"+"%";
+            status2.innerHTML = status1;
+            light.innerHTML = light1;
+        }
+        
+        check.onclick = function(){
+            if(check.checked == true){
+            slider.value = 100;
+            status1 = "Bật";
+            light1 = "100"+"%";
+            }
+            else{
+                slider.value = 0;
+                status1 = "Tắt";
+                light1 = "0"+"%";
+            }
+            status2.innerHTML = status1;
+            light.innerHTML = light1;
+        }
+        slider.oninput = function(){
+            light.innerHTML = this.value+"%";
+            if(this.value == 0){
+                status1 = "Tắt";
+                check.checked = false;
+            }
+            else {status1 ="Bật";check.checked = true;}
+            status2.innerHTML = status1;
+        }
+    </script>
+</body>
+</html>
