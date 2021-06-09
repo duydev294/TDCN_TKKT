@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SH Controler</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <div class="info">
+            <p><b>SMART HOME CONTROLER</b></p>
+            <p>Khu vực:Tầng 1 - Phòng khách</p>
+            <p>Thiết bị: Điều hòa</p>
+        </div>
+        <div class="setting">
+            <div class="switch1">
+                <p><b>Công tắc: </b></p>
+                <b>Bật</b>
+                <label class="switch">
+                    <input id ="check" type="checkbox" >
+                    <span class="slider round"></span>
+                </label>
+                <b>Tắt</b>
+            </div>
+            <div class="temper">
+                <p><b>Nhiệt độ:</b></p>
+                
+                <div class="buttona">
+                    <button><img src="add .png" id = "add" class = "add"></button>
+                    <input type="range" min="0" max="100" value="0" class="slider1" id ="myRange">
+                    <button><img src="minus.png" id = "minus" class = "add"></button>
+                </div>
+            </div>
+            <div class="timer">
+                <p><b>Hẹn giờ: <span id="timer1"></span></b></p>
+                <label class="switch">
+                    <input id ="check1" type="checkbox" >
+                    <span class="slider round"></span>
+                </label>
+                <span id="timer"></span>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        var tick1 = document.getElementById("check1");
+        var write = document.getElementById("timer");
+        var tick = document.getElementById("check");
+        var timer1 = document.getElementById("timer1");
+        tick1.onclick = function(){
+            if(tick1.checked == true){
+                write.innerHTML="<input type='range' min='0' max='500' value='0' class='slider1' id ='myRange1'>"+"<script>var time_value = document.getElementById('myRange1');"+"var timer2 = document.getElementById('timer1');"+"timer2.innerHTML= time_value+'Phút';"+"</scrip"+"t>";
+                var time_value = document.getElementById("myRange1");
+                
+            }
+            else{
+                write.innerHTML="";
+                timer1.innerHTML =""
+            }
+        }
+
+    </script>
+</body>
+</html>
