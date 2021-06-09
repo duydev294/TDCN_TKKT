@@ -19,19 +19,19 @@
         <div class="setting">
             <div class="switch1">
                 <p><b>Công tắc: </b></p>
-                <b>Bật</b>
+                <b>Tắt</b>
                 <label class="switch">
                     <input id ="check" type="checkbox" >
                     <span class="slider round"></span>
                 </label>
-                <b>Tắt</b>
+                <b>Bật</b>
             </div>
             <div class="temper">
-                <p><b>Nhiệt độ:</b></p>
+                <p><b>Nhiệt độ: <span id="temp"></span></b></p>
                 
                 <div class="buttona">
                     <button><img src="add .png" id = "add" class = "add"></button>
-                    <input type="range" min="0" max="100" value="0" class="slider1" id ="myRange">
+                    <input type="range" min="20" max="40" value="0" class="slider1" id ="myRange" >
                     <button><img src="minus.png" id = "minus" class = "add"></button>
                 </div>
             </div>
@@ -51,10 +51,15 @@
         var write = document.getElementById("timer");
         var tick = document.getElementById("check");
         var timer1 = document.getElementById("timer1");
+        var js_add = document.getElementById("add");
+        var js_minus = document.getElementById("minus");
+        var range = document.getElementById("myRange");
+        var js_temp = document.getElementById("temp");
+        
         tick1.onclick = function(){
             if(tick1.checked == true){
-                write.innerHTML="<input type='range' min='0' max='500' value='0' class='slider1' id ='myRange1'>"+"<script>var time_value = document.getElementById('myRange1');"+"var timer2 = document.getElementById('timer1');"+"timer2.innerHTML= time_value+'Phút';"+"</scrip"+"t>";
-                var time_value = document.getElementById("myRange1");
+                write.innerHTML="<input type='range' min='0' max='500' value='0' class='slider1' id ='myRange1' oninput = 'counter(myRange1)'>" +"<scri"+"pt type='text/javascript'>function counter( id){var range1 = document.getElementById(id).value;var timer1 = document.getElementById('timer1');;timer1.innerHTML = 10 +'phút';}</scr"+"ipt>";
+                
                 
             }
             else{
@@ -62,7 +67,20 @@
                 timer1.innerHTML =""
             }
         }
-
+        js_add.onclick = function(){
+            range.value ++;
+            js_temp.innerHTML = range.value + "°C";
+        }
+        js_minus.onclick = function(){
+            range.value --;
+            js_temp.innerHTML = range.value + "°C";
+        }
+        range.oninput = function(){
+            js_temp.innerHTML = range.value + "°C";
+        }
+        tick.onclick = function(){
+            if(tick.checked == false) {tick1.checked = false; write.innerHTML="";range.value = 0;js_temp.innerHTML = "";}
+        }
     </script>
 </body>
 </html>
